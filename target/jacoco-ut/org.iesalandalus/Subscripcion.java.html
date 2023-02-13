@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Subscripcion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ed35b</a> &gt; <a href="index.source.html" class="el_package">org.iesalandalus</a> &gt; <span class="el_source">Subscripcion.java</span></div><h1>Subscripcion.java</h1><pre class="source lang-java linenums">package org.iesalandalus;
+import java.math.BigDecimal;
+
+public class Subscripcion {
+	private int precio; // precio total de la subscripción euro-cent
+	private int periodo; // periodo de subscripcion en meses
+
+	/**
+	 * El constructor para crear una subscripción.
+	 */
+<span class="fc" id="L11">	public Subscripcion(int p, int n) {</span>
+<span class="fc" id="L12">		precio = p;</span>
+<span class="fc" id="L13">		periodo = n;</span>
+<span class="fc" id="L14">	}</span>
+
+	/**
+	 * Calcula el precio de la subscripción mensual en euros, redondeándolo por
+	 * arriba al céntimo más cercano.
+	 * 
+	 */
+	public double precioPorMes() {
+<span class="fc bfc" id="L22" title="All 4 branches covered.">		if (periodo &lt;= 0 || precio &lt;= 0)</span>
+<span class="fc" id="L23">			return 0;</span>
+<span class="fc" id="L24">		double r = (double) precio / (double) periodo;</span>
+<span class="fc" id="L25">		double resto = r % 1;</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">		if (resto &gt; 0)</span>
+<span class="fc" id="L28">			return Math.floor(r + 1);</span>
+		else
+<span class="fc" id="L30">			return Math.floor(r);</span>
+	}
+
+	/**
+	 * Este método cancela la subscripción.
+	 */
+	public void cancel() {
+<span class="fc" id="L37">		periodo = 0;</span>
+<span class="fc" id="L38">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
